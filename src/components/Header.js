@@ -74,7 +74,7 @@ const Header = () => {
                   <span
                     className={`${
                       isOpen ? "opacity-100" : "opacity-0"
-                    } text-sm md:text-base  duration-300`}
+                    } text-sm md:text-base  duration-200`}
                   >
                     {item.label}
                   </span>
