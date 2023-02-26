@@ -4,7 +4,7 @@ const withLayout = (WrappedComponent) => {
   return (props) => {
     return (
       <section className="w-full flex">
-        <Header/>
+        <Header />
         <WrappedComponent {...props} />
       </section>
     );
