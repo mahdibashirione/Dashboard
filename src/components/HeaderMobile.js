@@ -1,14 +1,15 @@
 import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
-import { FiChevronRight, FiUser } from "react-icons/fi";
+import { FiChevronRight, FiMenu, FiUser } from "react-icons/fi";
 import CottageRoundedIcon from "@mui/icons-material/CottageRounded";
 import CategoryRoundedIcon from "@mui/icons-material/CategoryRounded";
 import PersonRoundedIcon from "@mui/icons-material/PersonRounded";
 import AlbumRoundedIcon from "@mui/icons-material/AlbumRounded";
 import SettingsRoundedIcon from "@mui/icons-material/SettingsRounded";
 import FavoriteRoundedIcon from "@mui/icons-material/FavoriteRounded";
+import { Backdrop } from "@mui/material";
 
-const Header = () => {
+const HeaderMobile = () => {
   const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
 
@@ -45,17 +46,27 @@ const Header = () => {
     },
   ];
 
+  const handleClouseHeader = () => {
+    setIsOpen(false);
+  };
+
   return (
-    <header className="hidden md:block md:py-4 md:px-2 min-h-full bg-transparent">
-      <div
-        className={`${
-          isOpen ? "max-w-full" : "max-w-[64px]"
-        } duration-300 transition-all w-full min-h-screen md:min-h-[calc(100vh-2rem)] max-h-[calc(100vh-2rem)] sticky top-4 py-4 px-3 bg-purple-500 rounded-r-lg md:rounded-l-lg flex flex-col justify-between items-center`}
+    <>
+      <div className="md:hidden text-white sticky top-0 w-full p-4 bg-purple-500 flex justify-between items-center">
+        <FiMenu
+          className="text-2xl cursor-pointer"
+          onClick={() => setIsOpen(true)}
+        />
+        <h1 className="select-none">IrMusic</h1>
+        <Backdrop open={isOpen} onClick={handleClouseHeader} />
+      </div>
+      <header
+        className={`
+        ${isOpen ? "max-w-full px-4" : "max-w-[0px] px-0"} 
+        fixed top-0 left-0 md:hidden duration-300 md:py-4 rounded-r-xl shadow md:px-2 min-h-full bg-purple-500 overflow-hidden py-4 flex flex-col justify-between`}
       >
         <div
-          className={`border-b pb-4 ${
-            isOpen ? "border-gray-200" : "border-transparent"
-          } select-none w-full flex gap-2 items-center duration-200 text-white overflow-hidden`}
+          className={`border-b pb-4 border-gray-300 select-none w-full flex gap-2 items-center duration-200 text-white overflow-hidden`}
         >
           <Link
             to="/user"
@@ -63,11 +74,7 @@ const Header = () => {
           >
             <FiUser className="text-xl" />
           </Link>
-          <div
-            className={`text-sm flex flex-col gap-1 whitespace-nowrap ${
-              isOpen ? "opacity-100" : "opacity-0"
-            }`}
-          >
+          <div className="text-sm flex flex-col gap-1 whitespace-nowrap">
             <span className="text-slate-200">Good Morning!</span>
             <p>Mahdi</p>
           </div>
@@ -77,21 +84,16 @@ const Header = () => {
             return (
               <li key={item.id + "-" + item.label} className="w-full">
                 <Link
+                  onClick={handleClouseHeader}
                   to={item.url}
-                  className={`flex items-center gap-x-2 p-2 w-full overflow-hidden ${
-                    isOpen ? "pr-8" : "pr-2"
-                  } rounded-md duration-200 ${
+                  className={`flex items-center gap-x-2 p-2 w-full overflow-hidden rounded-md duration-200 ${
                     location.pathname === item.url
                       ? "bg-white text-slate-800"
                       : "bg-transparent hover:bg-purple-400"
                   }`}
                 >
                   {item.icon}
-                  <span
-                    className={`${
-                      isOpen ? "opacity-100" : "opacity-0"
-                    } text-sm md:text-base  duration-200`}
-                  >
+                  <span className="text-sm md:text-base  duration-200">
                     {item.label}
                   </span>
                 </Link>
@@ -100,37 +102,20 @@ const Header = () => {
           })}
         </ul>
         <Link
+          onClick={handleClouseHeader}
           to="/setting"
-          className={`flex items-center w-full gap-x-2 p-2 overflow-hidden ${
-            isOpen ? "pr-8" : "pr-2"
-          } rounded-md duration-200 ${
+          className={`flex items-center w-full gap-x-2 p-2 overflow-hidden rounded-md duration-200 ${
             location.pathname === "/setting"
               ? "bg-white text-slate-800"
               : "text-white bg-transparent hover:bg-purple-400"
           }`}
         >
           <SettingsRoundedIcon className="ml-0.5" fontSize="small" />
-          <span
-            className={`${
-              isOpen ? "opacity-100" : "opacity-0"
-            } text-sm md:text-base  duration-200`}
-          >
-            Setting
-          </span>
+          <span className={` text-sm md:text-base  duration-200`}>Setting</span>
         </Link>
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="absolute -right-4 top-[62px] z-10 bg-white p-1.5 rounded-full"
-        >
-          <FiChevronRight
-            className={`${
-              isOpen ? "rotate-180" : "rotate-0"
-            } text-purple-500 text-xl duration-300`}
-          />
-        </button>
-      </div>
-    </header>
+      </header>
+    </>
   );
 };
 
-export default Header;
+export default HeaderMobile;
