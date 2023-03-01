@@ -52,7 +52,7 @@ const HeaderMobile = () => {
 
   return (
     <>
-      <div className="md:hidden text-white sticky top-0 w-full p-4 bg-purple-500 flex justify-between items-center">
+      <div className="md:hidden text-white w-full p-4 bg-purple-500 flex justify-between items-center">
         <FiMenu
           className="text-2xl cursor-pointer"
           onClick={() => setIsOpen(true)}
@@ -63,7 +63,7 @@ const HeaderMobile = () => {
       <header
         className={`
         ${isOpen ? "max-w-full px-4" : "max-w-[0px] px-0"} 
-        fixed top-0 left-0 md:hidden duration-300 md:py-4 rounded-r-xl shadow md:px-2 min-h-full bg-purple-500 overflow-hidden py-4 flex flex-col justify-between`}
+        fixed top-0 z-20 left-0 md:hidden duration-300 md:py-4 rounded-r-xl shadow md:px-2 min-h-full bg-purple-500 overflow-hidden py-4 flex flex-col justify-between`}
       >
         <div
           className={`border-b pb-4 border-gray-300 select-none w-full flex gap-2 items-center duration-200 text-white overflow-hidden`}

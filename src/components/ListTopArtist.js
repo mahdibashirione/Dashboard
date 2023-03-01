@@ -34,7 +34,7 @@ const ListTopArtist = () => {
   ];
 
   return (
-    <section className="w-full">
+    <section className="w-full z-10">
       <article className="flex items-center justify-between px-4">
         <div className="flex items-center gap-x-4">
           <h2 className="font-bold text-lg">Top Artist</h2>
@@ -52,25 +52,26 @@ const ListTopArtist = () => {
           </span>
         </div>
       </article>
-      <article className="scrollbar-hidden  w-full px-4 flex overflow-x-scroll md:overflow-hidden md:grid md:grid-cols-2 lg:grid-cols-4 pb-4">
+      <article className="scrollbar-hidden w-full px-4 pt-4 gap-2 flex overflow-x-scroll md:overflow-hidden md:grid md:grid-cols-2 lg:grid-cols-4 pb-4">
         {options.map((item) => {
           return (
             <aside
               key={item.id}
-              className="col-span-1 px-5 py-3 bg-transparent select-none min-w-[250px] md:min-w-full flex flex-col"
+              className="bg-white rounded-xl overflow-hidden border shadow col-span-1 bg-transparent select-none min-w-[230px] md:min-w-full flex flex-col"
             >
               <Link
                 to="/"
-                className="shadow w-full h-[200px] md:h-[300px] lg:h-[200px] xl:h-[260px] overflow-hidden rounded-lg"
+                className="shadow w-full h-[200px] md:h-[300px] lg:h-[200px] xl:h-[260px] overflow-hidden"
               >
                 <img
-                  className="w-full h-full object-cover hover:scale-110 duration-500"
+                  className="w-full h-full object-cover hover:scale-110 duration-500 grayscale"
                   src={item.img}
+                  loading="lazy"
                   alt={item.discreption}
                 />
               </Link>
-              <div className="w-full px-2">
-                <h3 className="font-extrabold mt-2 text-slate-800 text-lg">
+              <div className="w-full p-4">
+                <h3 className="font-extrabold text-slate-800 text-lg">
                   {item.name}
                 </h3>
                 <p className="text-gray-500 text-sm flex">
