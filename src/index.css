@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .scrollbar-none {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+
+  .shadow-main {
+    box-shadow: 0 0 13px 5px rgba(81, 133, 129, 0.1);
+  }
+
+  html {
+    color: #151411;
+  }
+
+  p {
+    color: #afadb5;
+  }
+}
