@@ -29,7 +29,7 @@ const chartdata = [
 
 const LineCh = () => {
   return (
-    <Card>
+    <div className="max-w-full rounded-lg p-4 shadow">
       <div className="flex items-start justify-between">
         <div>
           <Metric>
@@ -53,7 +53,7 @@ const LineCh = () => {
         colors={["blue"]}
         yAxisWidth={40}
       />
-    </Card>
+    </div>
   );
 };
 

@@ -1,12 +1,14 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useRoutes } from "react-router-dom";
 import HomePage from "./pages/Home";
+import NotFoundPage from "./pages/404Page";
 
 function App() {
-  return (
-    <Routes>
-      <Route path="/" element={<HomePage />} />
-    </Routes>
-  );
+  const router = useRoutes([
+    { path: "/", element: <HomePage /> },
+    { path: "/*", element: <NotFoundPage /> },
+  ]);
+
+  return router;
 }
 
 export default App;

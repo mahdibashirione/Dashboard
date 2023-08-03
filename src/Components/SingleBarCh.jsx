@@ -38,7 +38,7 @@ const dataFormatter = (number) => {
 
 const SingleBarCh = () => {
   return (
-    <Card>
+    <div className="max-w-full rounded-lg p-4 shadow">
       <div className="flex items-start justify-between">
         <div>
           <Metric>
@@ -63,7 +63,7 @@ const SingleBarCh = () => {
         valueFormatter={dataFormatter}
         yAxisWidth={48}
       />
-    </Card>
+    </div>
   );
 };
 
