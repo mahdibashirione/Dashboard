@@ -29,7 +29,7 @@ const chartdata = [
 
 const LineCh = () => {
   return (
-    <div className="max-w-full rounded-lg p-4 shadow">
+    <div className="max-w-full rounded-lg p-4 shadow border-t">
       <div className="flex items-start justify-between">
         <div>
           <Metric>

@@ -21,24 +21,24 @@ const Header = () => {
   ];
 
   return (
-    <header className="md:hidden w-full fixed top-0 left-0 z-20 bg-white">
+    <header className="md:hidden w-full fixed top-0 left-0 z-20 bg-blue-500 text-white">
       <div className="max-w-8xl mx-auto p-4 border-b flex justify-between items-center">
         <button
           onClick={(e) => setIsShow(!isShow)}
           className="flex flex-col gap-y-2 overflow-hidden"
         >
           <span
-            className={`h-[2px] w-6 block bg-slate-800 rounded-full duration-500 ${
+            className={`h-[2px] w-6 block bg-white rounded-full duration-500 ${
               isShow && "rotate-45 translate-y-3"
             }`}
           ></span>
           <span
-            className={`h-[2px] w-6 block bg-slate-800 rounded-full duration-500 ${
+            className={`h-[2px] w-6 block bg-white rounded-full duration-500 ${
               isShow && "translate-x-8"
             }`}
           ></span>
           <span
-            className={`h-[2px] w-6 block bg-slate-800 rounded-full duration-500 ${
+            className={`h-[2px] w-6 block bg-white rounded-full duration-500 ${
               isShow && "-rotate-45 -translate-y-2"
             }`}
           ></span>
@@ -50,7 +50,7 @@ const Header = () => {
         </div>
       </div>
       <nav
-        className={`w-full absolute top-full left-0 z-20 px-4 bg-white ${
+        className={`w-full absolute top-full left-0 z-20 px-4 bg-blue-400 ${
           isShow ? "max-h-screen" : "max-h-0"
         } overflow-hidden duration-500 shadow`}
       >

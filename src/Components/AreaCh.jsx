@@ -2,7 +2,7 @@ import { Card, Title, AreaChart, Metric } from "@tremor/react";
 import { memo, useEffect, useState } from "react";
 
 const AreaCh = () => {
-  const allchartdata = [
+  const initialChartdata = [
     {
       date: "Apr 01",
       Templates: 40000,
@@ -160,8 +160,8 @@ const AreaCh = () => {
     },
   ];
 
-  const [selectOption, setSelectOption] = useState("Month");
-  const [chartData, setChartData] = useState([...allchartdata]);
+  const [selectOption, setSelectOption] = useState("Week");
+  const [chartData, setChartData] = useState([...initialChartdata]);
 
   const dataFormatter = (number) => {
     return "$ " + Intl.NumberFormat("us").format(number).toString();
@@ -169,20 +169,20 @@ const AreaCh = () => {
   const handleChangeOption = (option) => {
     switch (option) {
       case "Month": {
-        setChartData(allchartdata);
+        setChartData(initialChartdata);
         break;
       }
       case "Week": {
-        const lengthAllData = allchartdata.length;
-        const filteredData = allchartdata.filter((data, i) => {
+        const lengthAllData = initialChartdata.length;
+        const filteredData = initialChartdata.filter((data, i) => {
           if (i + 1 > lengthAllData - 7) return data;
         });
         setChartData(filteredData);
         break;
       }
       case "Day": {
-        const lengthAllData = allchartdata.length;
-        const filteredData = allchartdata.filter((data, i) => {
+        const lengthAllData = initialChartdata.length;
+        const filteredData = initialChartdata.filter((data, i) => {
           if (i + 1 >= lengthAllData - 1) return data;
         });
         setChartData(filteredData);
@@ -196,7 +196,7 @@ const AreaCh = () => {
   }, [selectOption]);
 
   return (
-    <div className="max-w-full rounded-lg p-4 shadow">
+    <div className="max-w-full rounded-lg p-4 shadow border-t">
       <div className="flex items-stretch justify-between">
         <Metric>Sales</Metric>
         <div className="flex border rounded-lg w-48 max-w-[12rem] overflow-hidden">

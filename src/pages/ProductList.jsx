@@ -1,6 +1,7 @@
 import { FiEdit, FiPlus, FiSearch } from "react-icons/fi";
 import Button from "../Components/common/Button";
 import { useEffect, useState } from "react";
+import NewProduct from "../Components/PopUp/NewProduct";
 
 const ProductItem = ({ product }) => {
   return (
@@ -29,6 +30,7 @@ const ProductListPage = () => {
     { id: "465994", name: "pen", category: "digital", price: "56" },
     { id: "265964", name: "monitor", category: "digital", price: "756" },
   ]);
+  const [popUp, setPopUp] = useState(false);
   const [search, setSearch] = useState("");
   const [filterProducts, setFilterProducts] = useState(null);
 
@@ -58,7 +60,7 @@ const ProductListPage = () => {
         {/* actions */}
         <div className="flex items-center gap-4">
           {/* add new product */}
-          <Button variants="contant">
+          <Button onClick={(e) => setPopUp(true)} variants="contant">
             <FiPlus className="text-lg" />
             New
           </Button>
@@ -89,6 +91,7 @@ const ProductListPage = () => {
           )}
         </ul>
       </article>
+      <NewProduct isOpen={popUp} handleCluse={(e) => setPopUp(false)} />
     </section>
   );
 };
