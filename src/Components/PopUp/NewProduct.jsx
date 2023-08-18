@@ -12,7 +12,7 @@ const NewProduct = ({
     category: "",
     price: "",
   },
-  isOpen,
+  isOpen = false,
   handleCluse,
 }) => {
   const contain = {
@@ -29,6 +29,7 @@ const NewProduct = ({
   };
   return (
     <motion.aside
+      initial={{ opacity: 0, zIndex: -10 }}
       animate={isOpen ? "open" : "clused"}
       variants={contain}
       className="fixed top-0 left-0 w-screen h-screen p-4 flex items-center justify-center bg-zinc-900/50 z-50"

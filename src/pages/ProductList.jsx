@@ -5,14 +5,14 @@ import NewProduct from "../Components/PopUp/NewProduct";
 
 const ProductItem = ({ product }) => {
   return (
-    <li className="w-full text-sm flex border-b items-center">
+    <li className="w-full text-sm flex border mb-2 rounded-xl items-center shadow">
       <span className="pl-4 flex-1 py-2.5 line-clamp-1">{product.name}</span>
       <span className="pl-4 flex-1 py-2.5 line-clamp-1">
         {product.category}
       </span>
       <span className="pl-4 flex-1 py-2.5 line-clamp-1">#{product.id}</span>
       <span className="pl-4 flex-1 py-2.5 line-clamp-1">{product.price}$</span>
-      <div className="px-4 py-2.5">
+      <div className="px-2.5 py-2.5">
         <Button variants="outline">
           <FiEdit className="text" />
           Edite
@@ -28,6 +28,13 @@ const ProductListPage = () => {
     { id: "651454", name: "iphone 14 plus", category: "digital", price: "16" },
     { id: "265134", name: "book telc A1 ", category: "books", price: "896" },
     { id: "465994", name: "pen", category: "digital", price: "56" },
+    { id: "265964", name: "monitor", category: "digital", price: "756" },
+    { id: "265964", name: "monitor", category: "digital", price: "756" },
+    { id: "265964", name: "monitor", category: "digital", price: "756" },
+    { id: "265964", name: "monitor", category: "digital", price: "756" },
+    { id: "265964", name: "monitor", category: "digital", price: "756" },
+    { id: "265964", name: "monitor", category: "digital", price: "756" },
+    { id: "265964", name: "monitor", category: "digital", price: "756" },
     { id: "265964", name: "monitor", category: "digital", price: "756" },
   ]);
   const [popUp, setPopUp] = useState(false);
@@ -46,7 +53,7 @@ const ProductListPage = () => {
 
   return (
     <section>
-      <div className="px-4 pb-4 flex items-center justify-between gap-4">
+      <div className="px-4 -mt-2 pb-2 flex items-center justify-between gap-4">
         {/* search product */}
         <div className="flex-1 relative text-sm">
           <input
@@ -73,10 +80,10 @@ const ProductListPage = () => {
           <p className="pl-4 flex-1 py-2.5">CATEGORY</p>
           <p className="pl-4 flex-1 py-2.5">ID</p>
           <p className="pl-4 flex-1 py-2.5">PRICE</p>
-          <div className="w-[104px]"></div>
+          <div className="w-[102px]"></div>
         </div>
         {/* products list*/}
-        <ul className="inset-y-1 w-full">
+        <ul className="inset-y-1 w-full max-h-[calc(100vh-173px)] md:max-h-[calc(100vh-116px)] overflow-y-scroll scrollbar-none p-2">
           {filterProducts ? (
             filterProducts.map((product) => (
               <ProductItem key={product.id} product={product} />
